@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'fileutils'
-require_relative '../swagger_codegen'
-require_relative '../bundle_js_client'
+require_relative '../openstax/swagger/swagger_codegen'
+require_relative '../openstax/swagger/bundle_js_client'
 
 namespace :openstax_swagger do
   desc <<-DESC.strip_heredoc

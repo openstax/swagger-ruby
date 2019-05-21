@@ -1,6 +1,6 @@
 require 'open-uri'
 require 'fileutils'
-require_relative '../swagger_codegen'
+require_relative '../openstax/swagger/swagger_codegen'
 
 namespace :openstax_swagger do
   desc <<-DESC.strip_heredoc
