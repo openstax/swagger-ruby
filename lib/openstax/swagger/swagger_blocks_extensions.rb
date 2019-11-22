@@ -21,7 +21,7 @@ module OpenStax::Swagger::SwaggerBlocksExtensions
           raise "Must set an operationId when generating a binding from a swagger_path"
         end
 
-        binding_name = path_node.data[:operationId].camelcase
+        binding_name = path_node.data[:operationId].camelcase + "Parameters"
         required_keys = []
 
         swagger_schema binding_name do
