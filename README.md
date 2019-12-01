@@ -59,7 +59,7 @@ end
 
 ### `swagger_path_and_parameters_schema`
 
-`swagger_path_and_parameters_schema` has the same arguments as the native `swagger_path` method but in addition to generating a swagger path definition, it will also call `swagger_schema` on the query parameters to let developers generate a binding from this schema to bind to parameters in a controller call (i.e. they can let swagger-codegen generate code that will validate the incoming parameters instead of replicating validity checks in the schema and in the controller).
+`swagger_path_and_parameters_schema` has the same arguments as the native `swagger_path` method but in addition to generating a swagger path definition, it will also call `swagger_schema` on the query parameters to let developers generate a binding from this schema to bind to parameters in a controller call (i.e. they can let swagger-codegen generate code that will validate the incoming parameters instead of replicating validity checks in the schema and in the controller).  Probably only works for simple parameters, not parameters with nested schemas.
 
 ## Contributing
 Contribution directions go here.
