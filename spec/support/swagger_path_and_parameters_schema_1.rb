@@ -1,4 +1,4 @@
-module SwaggerPathAndParametersSchema
+module SwaggerPathAndParametersSchema1
   include Swagger::Blocks
   include OpenStax::Swagger::SwaggerBlocksExtensions
 
