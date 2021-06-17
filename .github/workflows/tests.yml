@@ -1,0 +1,36 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  rspec:
+    timeout-minutes: 10
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        rails:
+          - RAILS_VERSION=5.2
+          - RAILS_VERSION=6.0
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Test
+        # See https://docs.codecov.io/docs/testing-with-docker
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          ${{ matrix.rails }} bundle install --jobs 4 --retry 3
+          ${{ matrix.rails }} bundle exec rspec

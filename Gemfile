@@ -1,6 +1,18 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+rails_version = ENV["RAILS_VERSION"] || "default"
+
+rails_version =
+  case rails_version
+  when "default"
+    ">= 5.2.3"
+  else
+    "~> #{rails_version}"
+  end
+
+gem "rails", rails_version
+
 # Declare your gem's dependencies in openstax_swagger.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
