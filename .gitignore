@@ -9,3 +9,4 @@ spec/dummy/db/
 spec/dummy/.sass-cache
 .byebug_history
 .DS_Store
+vendor/*
