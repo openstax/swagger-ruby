@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.version     = OpenStax::Swagger::VERSION
   spec.authors     = ["JP Slavinsky"]
   spec.email       = ["jpslav@gmail.com"]
-  spec.homepage    = "https://github.com/openstax/swagger-rails"
-  spec.summary     = "OpenStax-specific use of swagger-blocks for Rails projects"
-  spec.description = "OpenStax-specific use of swagger-blocks for Rails projects"
+  spec.homepage    = "https://github.com/openstax/swagger-ruby"
+  spec.summary     = "OpenStax-specific use of swagger-blocks for Ruby projects"
+  spec.description = "OpenStax-specific use of swagger-blocks for Ruby projects"
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -23,14 +23,13 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  spec.files = Dir["{lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", ">= 5.2.3", "< 7.0"
+  spec.add_dependency "activesupport"
   spec.add_dependency "swagger-blocks"
   spec.add_dependency "oj"
   spec.add_dependency "oj_mimic_json"
 
-  spec.add_development_dependency "sqlite3"
-  spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "byebug"
+  spec.add_development_dependency "rspec"
 end

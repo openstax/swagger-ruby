@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'bundler/inline'
+
+gemfile do
+  gem 'openstax_swagger', path: '../..'
+  gem 'byebug'
+end
+
+require 'byebug'
+require 'openstax_swagger'
+require_relative 'schema_one'
+
+OpenStax::Swagger.configure do |config|
+  config.json_proc = lambda { |api_major_version|
+    Swagger::Blocks.build_root_json([SchemaOne])
+  }
+  config.model_bindings_dir_proc = -> (api_major_version) {
+    "#{__dir__}/schema_one_bindings/api/v#{api_major_version}/bindings"
+  }
+end
+
+OpenStax::Swagger::GenerateModelBindings.generate(api_major_version: '0')
