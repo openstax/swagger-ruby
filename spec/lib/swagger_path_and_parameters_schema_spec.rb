@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'swagger_path_and_parameters_schema' do
 
   it 'generates the path and parameters definition when there is only one path call' do

@@ -1,4 +1,3 @@
-require 'rails_helper'
 require 'ostruct'
 
 RSpec.describe 'bind' do
@@ -13,7 +12,7 @@ RSpec.describe 'bind' do
     }}
 
     let(:valid_params) {
-      ActionController::Parameters.new(valid_hash)
+      MockParams.new(valid_hash)
     }
 
     let(:valid_hash) {
@@ -32,6 +31,7 @@ RSpec.describe 'bind' do
     }
 
     it 'binds to params' do
+      expect(valid_params).to receive(:permit!)
       binding, error = bind(valid_params, Api::V0::Bindings::TopLevel)
       expect(error).to be_nil
       expect(binding.an_integer).to eq 42
@@ -48,8 +48,8 @@ RSpec.describe 'bind' do
     end
 
     it 'has bound nested items that detect invalidity' do
-      valid_params[:a_defined_object][:an_array] = %w(yo yo ma)
-      binding, error = bind(valid_params, Api::V0::Bindings::TopLevel)
+      valid_hash.deep_merge!(:a_defined_object => {an_array: %w(yo yo ma)})
+      binding, error = bind(valid_hash, Api::V0::Bindings::TopLevel)
       expect(binding.a_defined_object.an_array[2]).not_to be_valid
     end
 
@@ -59,8 +59,8 @@ RSpec.describe 'bind' do
       # If we want to use the bindings for schema validation, we'll need a way to get around
       # this.  Or we should use a separate schema validator.
 
-      valid_params[:a_defined_object][:an_array] = %w(yo yo ma)
-      binding, error = bind(valid_params, Api::V0::Bindings::TopLevel)
+      valid_hash.deep_merge!(:a_defined_object => {an_array: %w(yo yo ma)})
+      binding, error = bind(valid_hash, Api::V0::Bindings::TopLevel)
       expect(error).not_to be_nil
     end
 

@@ -1,14 +1,13 @@
-# OpenstaxSwagger
-Short description and motivation.
+# OpenStax Swagger
 
-## Usage
-How to use my plugin.
+Swagger utilities for OpenStax Ruby projects.  Note that this is a fork of https://github.com/openstax/swagger-rails, without all the Rails dependencies.  This version is good for plain Ruby or Sinatra projects.
 
 ## Installation
-Add this line to your application's Gemfile:
+
+This gem is not hosted on RubyGems.  Add this line to your application's Gemfile:
 
 ```ruby
-gem 'openstax_swagger'
+gem 'openstax_swagger', git: 'https://github.com/openstax/swagger-ruby.git', ref: 'some_shaw'
 ```
 
 And then execute:
@@ -16,9 +15,13 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
+## Docker
+
+You can do everything you need inside a provided Docker container:
+
 ```bash
-$ gem install openstax_swagger
+$> ./docker/build
+$> ./docker/bash
 ```
 
 ## Generating client libraries
